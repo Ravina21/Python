@@ -46,3 +46,11 @@ def main():
     document_id = insert_sample_document(collection)
 if __name__ == "__main__":
     main()
+    
+def insert_sample_document(collection):
+    """Insert a sample document and return the contents of its _id field"""
+    document_id = collection.insert_one(
+        {FIELD: randint(50, 500)}
+    ).inserted_id
+    print("Inserted document with _id {}".format(document_id))
+    return document_id
