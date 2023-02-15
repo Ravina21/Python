@@ -14,24 +14,24 @@ def create_database_unsharded_collection(client):
     """Create sample database with shared throughput if it doesn't exist and
     an unsharded collection
     """
-    db = client[Mongo]
+    db = client[DATABASE]
     # Create database if it doesn't exist
-    if DB_NAME not in client.list_database_names():
+    if DATABASE not in client.list_database_names():
         # Database with 400 RU throughput that can be shared across the
         # DB's collections
         db.command({"customAction": "CreateDatabase", "offerThroughput": 400})
-        print("Created db {} with shared throughput".format(Mongo))
+        print("Created db {} with shared throughput".format(DATABASE))
     # Create collection if it doesn't exist
-    if Data not in db.list_collection_names():
+    if COLLECTION not in db.list_collection_names():
         # Creates a unsharded collection that uses the DBs shared throughput
         db.command(
             {
                 "customAction": "CreateCollection",
-                "collection": Data,
+                "collection": COLLECTION,
             }
         )
-        print("Created collection {}".format(Data))
-    return db[Data]
+        print("Created collection {}".format(COLLECTION))
+    return db[COLLECTION]
     
 def main():
     client = pymongo.MongoClient(CONNECTION_STRING)
