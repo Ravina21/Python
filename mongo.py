@@ -33,10 +33,7 @@ def create_database_unsharded_collection(client):
         print("Created collection {}".format(Data))
     return db[Data]
     
-    def main():
-    """Connect to the API for MongoDB, create DB and collection, perform
-    CRUD operations
-    """
+def main():
     client = pymongo.MongoClient(CONNECTION_STRING)
     try:
         client.server_info()  # validate connection string
