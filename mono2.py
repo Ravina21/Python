@@ -52,7 +52,6 @@ def insert_sample_document(collection):
       "EmployeeType": "Regular",
       "Position": "Manager",
       "Id": "ABC123"
-        }
   }
     ).inserted_id
     print("Inserted document with _id {}".format(document_id))
