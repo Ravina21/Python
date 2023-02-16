@@ -36,7 +36,8 @@ def create_database_unsharded_collection(client):
 def insert_sample_document(collection):
     """Insert a sample document and return the contents of its _id field"""
     document_id = collection.insert_one(
-        {FIELD: randint(50, 500)},{{"Employee": {
+        {FIELD: randint(50, 500),
+         "Employee": {
       "Organization": "BFL",
       "Title": "Mrs.",
       "GivenName": "Jane",
@@ -52,7 +53,7 @@ def insert_sample_document(collection):
       "Position": "Manager",
       "Id": "ABC123"
       }
-  }}
+  }
     ).inserted_id
     print("Inserted document with _id {}".format(document_id))
     return document_id
